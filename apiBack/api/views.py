@@ -11,8 +11,8 @@ class ChatbotAPIView(APIView):
         user_message = request.data.get('message')
         
         # Envoyer le texte à l'API de Google
-        API_KEY = "AIzaSyAde0V4HHdCHOOJ4ZIR2Dx4mxGfc8QxS5w"  
-        # url = f"https://api.example.com/v1/generative/{API_KEY}"  
+        API_KEY = env.api  
+       
         genai.configure(api_key=API_KEY)
         model = genai.GenerativeModel('gemini-pro')
         response = model.generate_content(user_message)
